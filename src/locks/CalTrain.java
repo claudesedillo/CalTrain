@@ -78,9 +78,7 @@ public class CalTrain {
         	}
         }
         
-
-        String currentQueueText = GUI.queue_info_list.get(passengerOrigin).getText();
-        GUI.queue_info_list.get(passengerOrigin).setText(currentQueueText + "Passenger" + peopleCtr + "\n   Destination: " + destination);
+        GUI.queue_info_list.get(passengerOrigin).append("Passenger" + peopleCtr + "\n   Destination: " + destination + "\n");
         
         peopleCtr++;  
     }

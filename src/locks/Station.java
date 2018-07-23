@@ -37,7 +37,7 @@ public class Station {
     }
 	
     public void addNewPassenger(int ctr, int destnum){
-	waitingPassengers.add(new Passenger(ctr, this, ("Station " + destnum)));
+	waitingPassengers.add(new Passenger(ctr, this, (destnum)));
     }
 	
     public Passenger removePassenger(){

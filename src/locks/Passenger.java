@@ -4,13 +4,13 @@ package locks;
 
 public class Passenger implements Runnable{
    private Station inStation;
-   private String outStation;
+   private int outStation;
    private int count;
    private Thread thread = new Thread(this);
    
    
    
-   public Passenger(int count, Station inStation, String outStation){
+   public Passenger(int count, Station inStation, int outStation){
 	this.count = count;
 	this.inStation = inStation;
 	this.outStation = outStation;
@@ -21,7 +21,7 @@ public class Passenger implements Runnable{
    }
 	
 	
-   public String getOutStation(){
+   public int getOutStation(){
 	return this.outStation;
    }
 	
