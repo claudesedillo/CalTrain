@@ -3,10 +3,7 @@ package locks;
 
 import java.util.Scanner;
 
-/**
- *
- * @author paolo
- */
+
 public class Driver {
 	
 
