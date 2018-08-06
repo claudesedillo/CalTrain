@@ -6,10 +6,6 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-/**
- *
- * @author paolo
- */
 public class Station {
     private Lock lock;
     private Station nextStation;

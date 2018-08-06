@@ -1,15 +1,11 @@
 package karl.locks;
 
 
-/**
-*
-* @author paolo
-*/
 public class Passenger implements Runnable{
+	
    private Station inStation;
    private String outStation;
    private int count;
-   private Thread thread = new Thread(this);
    
    
    

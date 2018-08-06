@@ -4,10 +4,6 @@ package karl.locks;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- *
- * @author paolo
- */
 public class CalTrain {
     public static CalTrain singleton = null;
 

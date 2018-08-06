@@ -8,24 +8,34 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class Station {
     private Lock lock;
+    private Station nextStation;
     private Condition state;
-    private int stationNumber;
+    private String name;
     
     private Train currentTrain;
     private Track trainOnTrack;
     private ArrayList<Passenger> waitingPassengers;
 
-    public Station(int stationNumber){
+    public Station(String name){
         this.waitingPassengers = new ArrayList<>();
         this.lock = new ReentrantLock();
-        this.stationNumber = stationNumber;
+        this.name = name;
+        this.nextStation = null;
         this.state = lock.newCondition();
         this.currentTrain = null;
         this.trainOnTrack = new Track();
     }
 	
-    public int getStationNumber(){
-        return this.stationNumber;
+    public String getName(){
+        return this.name;
+    }
+	
+    public void setNextStation(Station s){
+	this.nextStation = s;
+    }
+	
+    public Station getNextStation(){
+        return this.nextStation;
     }
 	
     public void setTrainOnTrack(Train t){
@@ -37,7 +47,7 @@ public class Station {
     }
 	
     public void addNewPassenger(int ctr, int destnum){
-	waitingPassengers.add(new Passenger(ctr, this, (destnum)));
+	waitingPassengers.add(new Passenger(ctr, this, ("Station " + destnum)));
     }
 	
     public Passenger removePassenger(){

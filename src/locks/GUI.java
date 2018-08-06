@@ -1,4 +1,5 @@
 package locks;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -9,10 +10,12 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
+import javax.swing.SpinnerModel;
+import javax.swing.SpinnerNumberModel;
 
-import zed.semaphores.Simulator;
+import semaphores.Simulator;
 
-public class GUINew {
+public class GUI {
 
 	private JFrame frame;
 	
@@ -34,77 +37,77 @@ public class GUINew {
 	private final JLabel label_train15 = new JLabel("Train 15");
 	private final JLabel label_train16 = new JLabel("Train 16");
 	
-	public static ArrayList<JLabel> list_train_status = new ArrayList<JLabel>();
-	public static JLabel status_train1 = new JLabel("Status: Not Deployed");
-	public static JLabel status_train2 = new JLabel("Status: Not Deployed");
-	public static JLabel status_train3 = new JLabel("Status: Not Deployed");
-	public static JLabel status_train4 = new JLabel("Status: Not Deployed");
-	public static JLabel status_train5 = new JLabel("Status: Not Deployed");
-	public static JLabel status_train6 = new JLabel("Status: Not Deployed");
-	public static JLabel status_train7 = new JLabel("Status: Not Deployed");
-	public static JLabel status_train8 = new JLabel("Status: Not Deployed");
-	public static JLabel status_train9 = new JLabel("Status: Not Deployed");
-	public static JLabel status_train10 = new JLabel("Status: Not Deployed");
-	public static JLabel status_train11 = new JLabel("Status: Not Deployed");
-	public static JLabel status_train12 = new JLabel("Status: Not Deployed");
-	public static JLabel status_train13 = new JLabel("Status: Not Deployed");
-	public static JLabel status_train14 = new JLabel("Status: Not Deployed");
-	public static JLabel status_train15 = new JLabel("Status: Not Deployed");
-	public static JLabel status_train16 = new JLabel("Status: Not Deployed");
+	public ArrayList<JLabel> list_train_status = new ArrayList<JLabel>();
+	public JLabel status_train1 = new JLabel("Status: Not Deployed");
+	public JLabel status_train2 = new JLabel("Status: Not Deployed");
+	public JLabel status_train3 = new JLabel("Status: Not Deployed");
+	public JLabel status_train4 = new JLabel("Status: Not Deployed");
+	public JLabel status_train5 = new JLabel("Status: Not Deployed");
+	public JLabel status_train6 = new JLabel("Status: Not Deployed");
+	public JLabel status_train7 = new JLabel("Status: Not Deployed");
+	public JLabel status_train8 = new JLabel("Status: Not Deployed");
+	public JLabel status_train9 = new JLabel("Status: Not Deployed");
+	public JLabel status_train10 = new JLabel("Status: Not Deployed");
+	public JLabel status_train11 = new JLabel("Status: Not Deployed");
+	public JLabel status_train12 = new JLabel("Status: Not Deployed");
+	public JLabel status_train13 = new JLabel("Status: Not Deployed");
+	public JLabel status_train14 = new JLabel("Status: Not Deployed");
+	public JLabel status_train15 = new JLabel("Status: Not Deployed");
+	public JLabel status_train16 = new JLabel("Status: Not Deployed");
 	
-	public static ArrayList<JLabel> list_train_location = new ArrayList<JLabel>();
-	public static JLabel location_train1 = new JLabel("Location:");
-	public static JLabel location_train2 = new JLabel("Location:");
-	public static JLabel location_train3 = new JLabel("Location:");
-	public static JLabel location_train4 = new JLabel("Location:");
-	public static JLabel location_train5 = new JLabel("Location:");
-	public static JLabel location_train6 = new JLabel("Location:");
-	public static JLabel location_train7 = new JLabel("Location:");
-	public static JLabel location_train8 = new JLabel("Location:");
-	public static JLabel location_train9 = new JLabel("Location:");
-	public static JLabel location_train10 = new JLabel("Location:");
-	public static JLabel location_train11 = new JLabel("Location:");
-	public static JLabel location_train12 = new JLabel("Location:");
-	public static JLabel location_train13 = new JLabel("Location:");
-	public static JLabel location_train14 = new JLabel("Location:");
-	public static JLabel location_train15 = new JLabel("Location:");
-	public static JLabel location_train16 = new JLabel("Location:");
+	public ArrayList<JLabel> list_train_location = new ArrayList<JLabel>();
+	public JLabel location_train1 = new JLabel("Location:");
+	public JLabel location_train2 = new JLabel("Location:");
+	public JLabel location_train3 = new JLabel("Location:");
+	public JLabel location_train4 = new JLabel("Location:");
+	public JLabel location_train5 = new JLabel("Location:");
+	public JLabel location_train6 = new JLabel("Location:");
+	public JLabel location_train7 = new JLabel("Location:");
+	public JLabel location_train8 = new JLabel("Location:");
+	public JLabel location_train9 = new JLabel("Location:");
+	public JLabel location_train10 = new JLabel("Location:");
+	public JLabel location_train11 = new JLabel("Location:");
+	public JLabel location_train12 = new JLabel("Location:");
+	public JLabel location_train13 = new JLabel("Location:");
+	public JLabel location_train14 = new JLabel("Location:");
+	public JLabel location_train15 = new JLabel("Location:");
+	public JLabel location_train16 = new JLabel("Location:");
 
-	public static ArrayList<JLabel> list_train_seatcount = new ArrayList<JLabel>();
-	public static JLabel seatcount_train1 = new JLabel("Seat Count: 5");
-	public static JLabel seatcount_train2 = new JLabel("Seat Count: 5");
-	public static JLabel seatcount_train3 = new JLabel("Seat Count: 5");
-	public static JLabel seatcount_train4 = new JLabel("Seat Count: 5");
-	public static JLabel seatcount_train5 = new JLabel("Seat Count: 5");
-	public static JLabel seatcount_train6 = new JLabel("Seat Count: 5");
-	public static JLabel seatcount_train7 = new JLabel("Seat Count: 5");
-	public static JLabel seatcount_train8 = new JLabel("Seat Count: 5");
-	public static JLabel seatcount_train9 = new JLabel("Seat Count: 5");
-	public static JLabel seatcount_train10 = new JLabel("Seat Count: 5");
-	public static JLabel seatcount_train11 = new JLabel("Seat Count: 5");
-	public static JLabel seatcount_train12 = new JLabel("Seat Count: 5");
-	public static JLabel seatcount_train13 = new JLabel("Seat Count: 5");
-	public static JLabel seatcount_train14 = new JLabel("Seat Count: 5");
-	public static JLabel seatcount_train15 = new JLabel("Seat Count: 5");
-	public static JLabel seatcount_train16 = new JLabel("Seat Count: 5");
+	public ArrayList<JLabel> list_train_seatcount = new ArrayList<JLabel>();
+	public JLabel seatcount_train1 = new JLabel("Seat Count:");
+	public JLabel seatcount_train2 = new JLabel("Seat Count:");
+	public JLabel seatcount_train3 = new JLabel("Seat Count:");
+	public JLabel seatcount_train4 = new JLabel("Seat Count:");
+	public JLabel seatcount_train5 = new JLabel("Seat Count:");
+	public JLabel seatcount_train6 = new JLabel("Seat Count:");
+	public JLabel seatcount_train7 = new JLabel("Seat Count:");
+	public JLabel seatcount_train8 = new JLabel("Seat Count:");
+	public JLabel seatcount_train9 = new JLabel("Seat Count:");
+	public JLabel seatcount_train10 = new JLabel("Seat Count:");
+	public JLabel seatcount_train11 = new JLabel("Seat Count:");
+	public JLabel seatcount_train12 = new JLabel("Seat Count:");
+	public JLabel seatcount_train13 = new JLabel("Seat Count:");
+	public JLabel seatcount_train14 = new JLabel("Seat Count:");
+	public JLabel seatcount_train15 = new JLabel("Seat Count:");
+	public JLabel seatcount_train16 = new JLabel("Seat Count:");
 	
-	public static ArrayList<JLabel> list_train_passengercount = new ArrayList<JLabel>();
-	public static JLabel passengercount_train1 = new JLabel("Passenger Count: 1");
-	public static JLabel passengercount_train2 = new JLabel("Passenger Count: 1");
-	public static JLabel passengercount_train3 = new JLabel("Passenger Count: 1");
-	public static JLabel passengercount_train4 = new JLabel("Passenger Count: 1");
-	public static JLabel passengercount_train5 = new JLabel("Passenger Count: 1");
-	public static JLabel passengercount_train6 = new JLabel("Passenger Count: 1");
-	public static JLabel passengercount_train7 = new JLabel("Passenger Count: 1");
-	public static JLabel passengercount_train8 = new JLabel("Passenger Count: 1");
-	public static JLabel passengercount_train9 = new JLabel("Passenger Count: 1");
-	public static JLabel passengercount_train10 = new JLabel("Passenger Count: 1");
-	public static JLabel passengercount_train11 = new JLabel("Passenger Count: 1");
-	public static JLabel passengercount_train12 = new JLabel("Passenger Count: 1");
-	public static JLabel passengercount_train13 = new JLabel("Passenger Count: 1");
-	public static JLabel passengercount_train14 = new JLabel("Passenger Count: 1");
-	public static JLabel passengercount_train15 = new JLabel("Passenger Count: 1");
-	public static JLabel passengercount_train16 = new JLabel("Passenger Count: 1");
+	public ArrayList<JLabel> list_train_passengercount = new ArrayList<JLabel>();
+	public JLabel passengercount_train1 = new JLabel("Passenger Count:");
+	public JLabel passengercount_train2 = new JLabel("Passenger Count:");
+	public JLabel passengercount_train3 = new JLabel("Passenger Count:");
+	public JLabel passengercount_train4 = new JLabel("Passenger Count:");
+	public JLabel passengercount_train5 = new JLabel("Passenger Count:");
+	public JLabel passengercount_train6 = new JLabel("Passenger Count:");
+	public JLabel passengercount_train7 = new JLabel("Passenger Count:");
+	public JLabel passengercount_train8 = new JLabel("Passenger Count:");
+	public JLabel passengercount_train9 = new JLabel("Passenger Count:");
+	public JLabel passengercount_train10 = new JLabel("Passenger Count:");
+	public JLabel passengercount_train11 = new JLabel("Passenger Count:");
+	public JLabel passengercount_train12 = new JLabel("Passenger Count:");
+	public JLabel passengercount_train13 = new JLabel("Passenger Count:");
+	public JLabel passengercount_train14 = new JLabel("Passenger Count:");
+	public JLabel passengercount_train15 = new JLabel("Passenger Count:");
+	public JLabel passengercount_train16 = new JLabel("Passenger Count:");
 	
 	private final JLabel lblStationQueue = new JLabel("Station Queue Status");
 	private final JLabel lblStation1Queue = new JLabel("Station 1");
@@ -115,35 +118,16 @@ public class GUINew {
 	private final JLabel lblStation6Queue = new JLabel("Station 6");
 	private final JLabel lblStation7Queue = new JLabel("Station 7");
 	private final JLabel lblStation8Queue = new JLabel("Station 8");
-	
-	private final JScrollPane station1_queue_scrollpane = new JScrollPane();
-	private final JScrollPane station2_queue_scrollpane = new JScrollPane();
-	private final JScrollPane station3_queue_scrollpane = new JScrollPane();
-	private final JScrollPane station4_queue_scrollpane = new JScrollPane();
-	private final JScrollPane station5_queue_scrollpane = new JScrollPane();
-	private final JScrollPane station6_queue_scrollpane = new JScrollPane();
-	private final JScrollPane station7_queue_scrollpane = new JScrollPane();
-	private final JScrollPane station8_queue_scrollpane = new JScrollPane();
-	
-	public static ArrayList<JTextArea> queue_info_list = new ArrayList<JTextArea>();
-	public static JTextArea queue_info_station1 = new JTextArea();
-	public static JTextArea queue_info_station2 = new JTextArea();
-	public static JTextArea queue_info_station3 = new JTextArea();
-	public static JTextArea queue_info_station4 = new JTextArea();
-	public static JTextArea queue_info_station5 = new JTextArea();
-	public static JTextArea queue_info_station6 = new JTextArea();
-	public static JTextArea queue_info_station7 = new JTextArea();
-	public static JTextArea queue_info_station8 = new JTextArea();
 
-	public static ArrayList<JLabel> queue_total_list = new ArrayList<JLabel>();
-	public static JLabel queue_total_station1 = new JLabel("Total: 0");
-	public static JLabel queue_total_station2 = new JLabel("Total: 0");
-	public static JLabel queue_total_station3 = new JLabel("Total: 0");
-	public static JLabel queue_total_station4 = new JLabel("Total: 0");
-	public static JLabel queue_total_station5 = new JLabel("Total: 0");
-	public static JLabel queue_total_station6 = new JLabel("Total: 0");
-	public static JLabel queue_total_station7 = new JLabel("Total: 0");
-	public static JLabel queue_total_station8 = new JLabel("Total: 0");
+	public ArrayList<JLabel> list_queue_total = new ArrayList<JLabel>();
+	public JLabel queue_total_station1 = new JLabel("Total: 0");
+	public JLabel queue_total_station2 = new JLabel("Total: 0");
+	public JLabel queue_total_station3 = new JLabel("Total: 0");
+	public JLabel queue_total_station4 = new JLabel("Total: 0");
+	public JLabel queue_total_station5 = new JLabel("Total: 0");
+	public JLabel queue_total_station6 = new JLabel("Total: 0");
+	public JLabel queue_total_station7 = new JLabel("Total: 0");
+	public JLabel queue_total_station8 = new JLabel("Total: 0");
 	
 	private final JLabel lblStationStatus = new JLabel("Station Status");
 	private final JLabel lblStationStatus1 = new JLabel("Station 1");
@@ -164,28 +148,35 @@ public class GUINew {
 	private final JScrollPane station7_status_scrollpane = new JScrollPane();
 	private final JScrollPane station8_status_scrollpane = new JScrollPane();
 	
-	public static ArrayList<JTextArea> station_status_list = new ArrayList<JTextArea>();
-	public static JTextArea status_station1 = new JTextArea();
-	public static JTextArea status_station2 = new JTextArea();
-	public static JTextArea status_station3 = new JTextArea();
-	public static JTextArea status_station4 = new JTextArea();
-	public static JTextArea status_station5 = new JTextArea();
-	public static JTextArea status_station6 = new JTextArea();
-	public static JTextArea status_station7 = new JTextArea();
-	public static JTextArea status_station8 = new JTextArea();
+	public ArrayList<JTextArea> list_station_status = new ArrayList<JTextArea>();
+	public JTextArea status_station1 = new JTextArea();
+	public JTextArea status_station2 = new JTextArea();
+	public JTextArea status_station3 = new JTextArea();
+	public JTextArea status_station4 = new JTextArea();
+	public JTextArea status_station5 = new JTextArea();
+	public JTextArea status_station6 = new JTextArea();
+	public JTextArea status_station7 = new JTextArea();
+	public JTextArea status_station8 = new JTextArea();
 	
-	public static JButton addPassenger_station1 = new JButton("Add");
-	public static JButton addPassenger_station2 = new JButton("Add");
-	public static JButton addPassenger_station3 = new JButton("Add");
-	public static JButton addPassenger_station4 = new JButton("Add");
-	public static JButton addPassenger_station5 = new JButton("Add");
-	public static JButton addPassenger_station6 = new JButton("Add");
-	public static JButton addPassenger_station7 = new JButton("Add");
-	public static JButton addPassenger_station8 = new JButton("Add");
+	public ArrayList<JButton> list_add_passenger_btn = new ArrayList<JButton>();
+	public JButton addPassenger_station1 = new JButton("Add");
+	public JButton addPassenger_station2 = new JButton("Add");
+	public JButton addPassenger_station3 = new JButton("Add");
+	public JButton addPassenger_station4 = new JButton("Add");
+	public JButton addPassenger_station5 = new JButton("Add");
+	public JButton addPassenger_station6 = new JButton("Add");
+	public JButton addPassenger_station7 = new JButton("Add");
+	public JButton addPassenger_station8 = new JButton("Add");
 	
-	public Simulator c;
+	public JButton btnRunSimulator ;
+	public JButton btn_deploy_train;
+	public JSpinner spinner_seatcount;
+	public SpinnerModel smTrain = new SpinnerNumberModel(1, 1, 20, 1);
+	public SpinnerModel sm = new SpinnerNumberModel(1, 1, 8, 1); //default value,lower bound,upper bound,increment by
+	public JSpinner destinationSpinner;
+	public Simulator simulator;
 	
-	public GUINew() {
+	public GUI() {
 		initialize();
 	}
 
@@ -245,98 +236,65 @@ public class GUINew {
 		lblTrainStatus.setBounds(10, 16, 120, 14);
 		frame.getContentPane().add(lblTrainStatus);
 		
-		lblStationQueue.setBounds(10, 298, 120, 14);
+		lblStationQueue.setBounds(10, 314, 120, 14);
 		frame.getContentPane().add(lblStationQueue);
 		
-		lblStation1Queue.setBounds(10, 314, 120, 14);
+		lblStation1Queue.setBounds(10, 339, 120, 14);
 		frame.getContentPane().add(lblStation1Queue);
 		
-		lblStation2Queue.setBounds(150, 314, 115, 14);
+		lblStation2Queue.setBounds(145, 339, 115, 14);
 		frame.getContentPane().add(lblStation2Queue);
 		
-		lblStation3Queue.setBounds(313, 314, 120, 14);
+		lblStation3Queue.setBounds(313, 339, 120, 14);
 		frame.getContentPane().add(lblStation3Queue);
 		
-		lblStation4Queue.setBounds(484, 314, 120, 14);
+		lblStation4Queue.setBounds(484, 339, 120, 14);
 		frame.getContentPane().add(lblStation4Queue);
 		
-		lblStation5Queue.setBounds(636, 314, 120, 14);
+		lblStation5Queue.setBounds(636, 339, 120, 14);
 		frame.getContentPane().add(lblStation5Queue);
 		
-		lblStation6Queue.setBounds(799, 314, 120, 14);
+		lblStation6Queue.setBounds(799, 339, 120, 14);
 		frame.getContentPane().add(lblStation6Queue);
 		
-		lblStation7Queue.setBounds(959, 314, 120, 14);
+		lblStation7Queue.setBounds(959, 339, 120, 14);
 		frame.getContentPane().add(lblStation7Queue);
 		
-		lblStation8Queue.setBounds(1116, 314, 120, 14);
+		lblStation8Queue.setBounds(1116, 339, 120, 14);
 		frame.getContentPane().add(lblStation8Queue);
 		
 		
-		station1_queue_scrollpane.setBounds(10, 339, 120, 80);
-		frame.getContentPane().add(station1_queue_scrollpane);
-		station1_queue_scrollpane.setViewportView(queue_info_station1);
-		
-		station2_queue_scrollpane.setBounds(145, 339, 120, 80);
-		frame.getContentPane().add(station2_queue_scrollpane);
-		station2_queue_scrollpane.setViewportView(queue_info_station2);
-		
-		station3_queue_scrollpane.setBounds(313, 339, 120, 80);
-		frame.getContentPane().add(station3_queue_scrollpane);
-		station3_queue_scrollpane.setViewportView(queue_info_station3);
-		
-		station4_queue_scrollpane.setBounds(484, 339, 120, 80);
-		frame.getContentPane().add(station4_queue_scrollpane);
-		station4_queue_scrollpane.setViewportView(queue_info_station4);
-		
-		station5_queue_scrollpane.setBounds(636, 339, 120, 80);
-		frame.getContentPane().add(station5_queue_scrollpane);
-		station5_queue_scrollpane.setViewportView(queue_info_station5);
-		
-		station6_queue_scrollpane.setBounds(799, 339, 120, 80);
-		frame.getContentPane().add(station6_queue_scrollpane);
-		station6_queue_scrollpane.setViewportView(queue_info_station6);
-		
-		station7_queue_scrollpane.setBounds(959, 339, 120, 80);
-		frame.getContentPane().add(station7_queue_scrollpane);
-		station7_queue_scrollpane.setViewportView(queue_info_station7);
-		
-		station8_queue_scrollpane.setBounds(1116, 339, 120, 80);
-		frame.getContentPane().add(station8_queue_scrollpane);
-		station8_queue_scrollpane.setViewportView(queue_info_station8);
-		
-		
-		queue_total_station1.setBounds(10, 430, 120, 14);
+		queue_total_station1.setBounds(10, 364, 120, 14);
 		frame.getContentPane().add(queue_total_station1);
-		queue_total_list.add(queue_total_station1);
+		list_queue_total.add(queue_total_station1);
 		
-		queue_total_station2.setBounds(145, 430, 131, 14);
+		queue_total_station2.setBounds(145, 364, 131, 14);
 		frame.getContentPane().add(queue_total_station2);
-		queue_total_list.add(queue_total_station2);
+		list_queue_total.add(queue_total_station2);
 		
-		queue_total_station3.setBounds(313, 430, 120, 14);
+		queue_total_station3.setBounds(313, 364, 120, 14);
 		frame.getContentPane().add(queue_total_station3);
-		queue_total_list.add(queue_total_station3);
+		list_queue_total.add(queue_total_station3);
 		
-		queue_total_station4.setBounds(484, 430, 131, 14);
+		queue_total_station4.setBounds(484, 364, 131, 14);
 		frame.getContentPane().add(queue_total_station4);
-		queue_total_list.add(queue_total_station4);
+		list_queue_total.add(queue_total_station4);
 		
-		queue_total_station5.setBounds(636, 430, 120, 14);
+		queue_total_station5.setBounds(636, 364, 120, 14);
 		frame.getContentPane().add(queue_total_station5);
-		queue_total_list.add(queue_total_station5);
+		list_queue_total.add(queue_total_station5);
 		
-		queue_total_station6.setBounds(799, 430, 120, 14);
+		queue_total_station6.setBounds(799, 364, 120, 14);
 		frame.getContentPane().add(queue_total_station6);
-		queue_total_list.add(queue_total_station6);
+		list_queue_total.add(queue_total_station6);
 		
-		queue_total_station7.setBounds(959, 430, 120, 14);
+		queue_total_station7.setBounds(959, 364, 120, 14);
 		frame.getContentPane().add(queue_total_station7);
-		queue_total_list.add(queue_total_station7);
+		list_queue_total.add(queue_total_station7);
 		
-		queue_total_station8.setBounds(1116, 430, 120, 14);
+		queue_total_station8.setBounds(1116, 364, 120, 14);
 		frame.getContentPane().add(queue_total_station8);
-		queue_total_list.add(queue_total_station8);
+		list_queue_total.add(queue_total_station8);
 		
 		lblStationStatus.setBounds(10, 455, 131, 14);
 		frame.getContentPane().add(lblStationStatus);
@@ -344,42 +302,42 @@ public class GUINew {
 		station1_status_scrollpane.setBounds(10, 500, 250, 66);
 		frame.getContentPane().add(station1_status_scrollpane);
 		station1_status_scrollpane.setViewportView(status_station1);
-		station_status_list.add(status_station1);
+		list_station_status.add(status_station1);
 		
 		station2_status_scrollpane.setBounds(354, 500, 250, 66);
 		frame.getContentPane().add(station2_status_scrollpane);
 		station2_status_scrollpane.setViewportView(status_station2);
-		station_status_list.add(status_station2);
+		list_station_status.add(status_station2);
 		
 		station3_status_scrollpane.setBounds(669, 500, 250, 66);
 		frame.getContentPane().add(station3_status_scrollpane);
 		station3_status_scrollpane.setViewportView(status_station3);
-		station_status_list.add(status_station3);
+		list_station_status.add(status_station3);
 		
 		station4_status_scrollpane.setBounds(986, 500, 250, 66);
 		frame.getContentPane().add(station4_status_scrollpane);
 		station4_status_scrollpane.setViewportView(status_station4);
-		station_status_list.add(status_station4);
+		list_station_status.add(status_station4);
 		
 		station5_status_scrollpane.setBounds(986, 604, 250, 66);
 		frame.getContentPane().add(station5_status_scrollpane);
 		station5_status_scrollpane.setViewportView(status_station5);
-		station_status_list.add(status_station5);
+		list_station_status.add(status_station5);
 		
 		station6_status_scrollpane.setBounds(669, 604, 250, 66);
 		frame.getContentPane().add(station6_status_scrollpane);
 		station6_status_scrollpane.setViewportView(status_station6);
-		station_status_list.add(status_station6);
+		list_station_status.add(status_station6);
 		
 		station7_status_scrollpane.setBounds(357, 604, 250, 66);
 		frame.getContentPane().add(station7_status_scrollpane);
 		station7_status_scrollpane.setViewportView(status_station7);
-		station_status_list.add(status_station7);
+		list_station_status.add(status_station7);
 		
 		station8_status_scrollpane.setBounds(10, 604, 250, 66);
 		frame.getContentPane().add(station8_status_scrollpane);
 		station8_status_scrollpane.setViewportView(status_station8);
-		station_status_list.add(status_station8);
+		list_station_status.add(status_station8);
 		
 		lblStationStatus1.setBounds(10, 480, 131, 14);
 		frame.getContentPane().add(lblStationStatus1);
@@ -441,40 +399,45 @@ public class GUINew {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		addPassenger_station4.setBounds(544, 310, 60, 23);
+		addPassenger_station4.setBounds(543, 335, 60, 23);
 		frame.getContentPane().add(addPassenger_station4);
 		
 
 		
-		addPassenger_station5.setBounds(698, 310, 60, 23);
+		addPassenger_station5.setBounds(697, 335, 60, 23);
 		frame.getContentPane().add(addPassenger_station5);
 		
 		
-		addPassenger_station3.setBounds(371, 310, 60, 23);
+		addPassenger_station3.setBounds(373, 335, 60, 23);
 		frame.getContentPane().add(addPassenger_station3);
 		
 		
-		addPassenger_station2.setBounds(214, 310, 60, 23);
+		addPassenger_station2.setBounds(214, 335, 60, 23);
 		frame.getContentPane().add(addPassenger_station2);
+
 		
 		
-		addPassenger_station1.setBounds(70, 310, 60, 23);
+		addPassenger_station1.setBounds(70, 335, 60, 23);
 		frame.getContentPane().add(addPassenger_station1);
 		
 		
-		addPassenger_station6.setBounds(859, 310, 60, 23);
+		addPassenger_station6.setBounds(859, 335, 60, 23);
 		frame.getContentPane().add(addPassenger_station6);
 		
 		
-		addPassenger_station7.setBounds(1019, 310, 60, 23);
+		addPassenger_station7.setBounds(1019, 335, 60, 23);
 		frame.getContentPane().add(addPassenger_station7);
 		
 		
-		addPassenger_station8.setBounds(1176, 310, 60, 23);
+		addPassenger_station8.setBounds(1176, 335, 60, 23);
 		frame.getContentPane().add(addPassenger_station8);
 		
-		JButton btnRunSimulator = new JButton("Run Simulator");
-		btnRunSimulator.setBounds(636, 12, 131, 23);
+		btnRunSimulator = new JButton("Run Simulator");
+		btnRunSimulator.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnRunSimulator.setBounds(714, 12, 131, 23);
 		frame.getContentPane().add(btnRunSimulator);
 		
 		
@@ -767,13 +730,31 @@ public class GUINew {
 		lblNumberOfSeats.setBounds(145, 16, 108, 14);
 		frame.getContentPane().add(lblNumberOfSeats);
 		
-		JButton btn_deploy_train = new JButton("Deploy New Train");
-		btn_deploy_train.setBounds(484, 12, 120, 23);
+		btn_deploy_train = new JButton("Deploy New Train");
+
+		btn_deploy_train.setBounds(484, 12, 142, 23);
 		frame.getContentPane().add(btn_deploy_train);
 		
-		JSpinner spinner_seatcount = new JSpinner();
+		spinner_seatcount = new JSpinner(smTrain);
 		spinner_seatcount.setBounds(313, 15, 46, 20);
 		frame.getContentPane().add(spinner_seatcount);
+		
+		JLabel lblDestination = new JLabel("Destination:");
+		lblDestination.setBounds(145, 314, 115, 14);
+		frame.getContentPane().add(lblDestination);
+		
+		destinationSpinner = new JSpinner(sm);
+		destinationSpinner.setBounds(291, 311, 29, 20);
+		frame.getContentPane().add(destinationSpinner);
+		
+		list_add_passenger_btn.add(addPassenger_station1);
+		list_add_passenger_btn.add(addPassenger_station2);
+		list_add_passenger_btn.add(addPassenger_station3);
+		list_add_passenger_btn.add(addPassenger_station4);
+		list_add_passenger_btn.add(addPassenger_station5);
+		list_add_passenger_btn.add(addPassenger_station6);
+		list_add_passenger_btn.add(addPassenger_station7);
+		list_add_passenger_btn.add(addPassenger_station8);
 	}
 	
 	private void initialize() {
@@ -784,20 +765,91 @@ public class GUINew {
 		frame.setVisible(true);
 		frame.getContentPane().setLayout(null);		
 		initializeGUI();
-		
 		initializeBackend();
 	}
 	
+	public void setLogic(Simulator c) {
+		this.simulator = c;
+	}
+	
 	private void initializeBackend(){
-		c = new Simulator();
-		c.station_init(); // add's 2nd station to the caltrain system
-		c.station_init(); // add's 3nd station to the caltrain system
-		c.station_init(); // add's 4th station to the caltrain system
-		c.station_init(); // add's 5th station to the caltrain system
-		c.station_init(); // add's 6th station to the caltrain system
-		c.station_init(); // add's 7th station to the caltrain system
-		c.station_init(); // add's 8th station to the caltrain system
+		simulator = new Simulator();
+		simulator.station_init(); // add's 2nd station to the caltrain system
+		simulator.station_init(); // add's 3nd station to the caltrain system
+		simulator.station_init(); // add's 4th station to the caltrain system
+		simulator.station_init(); // add's 5th station to the caltrain system
+		simulator.station_init(); // add's 6th station to the caltrain system
+		simulator.station_init(); // add's 7th station to the caltrain system
+		simulator.station_init(); // add's 8th station to the caltrain system
+
+		simulator.setGUI(this);
 		
-		c.setGUITwo(this);
+		setLogic(simulator);
+		
+		addPassenger_station1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				simulator.station_wait_for_train(simulator.getStations().get(0),
+						simulator.getStations().get(Integer.parseInt(destinationSpinner.getValue().toString()) - 1));
+			}
+		});
+		
+		addPassenger_station2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				simulator.station_wait_for_train(simulator.getStations().get(1),
+						simulator.getStations().get(Integer.parseInt(destinationSpinner.getValue().toString()) - 1));
+			}
+		});
+		
+		addPassenger_station3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				simulator.station_wait_for_train(simulator.getStations().get(2),
+						simulator.getStations().get(Integer.parseInt(destinationSpinner.getValue().toString()) - 1));
+			}
+		});
+		
+		addPassenger_station4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				simulator.station_wait_for_train(simulator.getStations().get(3),
+						simulator.getStations().get(Integer.parseInt(destinationSpinner.getValue().toString()) - 1));
+			}
+		});
+		
+		addPassenger_station5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				simulator.station_wait_for_train(simulator.getStations().get(4),
+						simulator.getStations().get(Integer.parseInt(destinationSpinner.getValue().toString()) - 1));
+			}
+		});
+		
+		addPassenger_station6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				simulator.station_wait_for_train(simulator.getStations().get(5),
+						simulator.getStations().get(Integer.parseInt(destinationSpinner.getValue().toString()) - 1));
+			}
+		});
+		
+		addPassenger_station7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				simulator.station_wait_for_train(simulator.getStations().get(6),
+						simulator.getStations().get(Integer.parseInt(destinationSpinner.getValue().toString()) - 1));
+			}
+		});
+		
+		addPassenger_station8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				simulator.station_wait_for_train(simulator.getStations().get(7),
+						simulator.getStations().get(Integer.parseInt(destinationSpinner.getValue().toString()) - 1));
+			}
+		});
+		
+		btn_deploy_train.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				int seatCount;
+				
+				seatCount = Integer.parseInt(spinner_seatcount.getValue().toString());
+
+				simulator.station_load_train(simulator.getStations().get(0), seatCount);
+			}
+		});
 	}
 }

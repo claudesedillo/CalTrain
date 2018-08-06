@@ -39,7 +39,10 @@ public class Simulator {
 	public void station_load_train(Station s, int count){
 		
 		new Train("Train " + trainCtr, count, s, this);
+		this.caltrainGUI.list_train_status.get(trainCtr - 1).setText("Status: Deployed");
+		this.caltrainGUI.list_train_seatcount.get(trainCtr - 1).setText("Seat Count: " + count);
 		trainCtr++;
+
 	}
 	
 	public void station_wait_for_train(Station origin, Station destination){

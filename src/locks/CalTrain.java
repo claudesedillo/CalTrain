@@ -2,15 +2,13 @@ package locks;
 
 
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.Scanner;
-
 
 public class CalTrain {
     public static CalTrain singleton = null;
 
-    ArrayList<Station> stations = new ArrayList<Station>();
-    ArrayList<Train> trains = new ArrayList<Train>();
+    ArrayList<Station> stations = new ArrayList<>();
+    ArrayList<Train> trains = new ArrayList<>();
 	
     public int peopleCtr;
     public int trainCtr;
@@ -21,7 +19,7 @@ public class CalTrain {
 		trainCtr = 1;
 		passCnt = 0;
 		stations = new ArrayList<>();
-		station_init();
+		station_init(8);
 	}
 
 	public static CalTrain getInstance(){
@@ -36,13 +34,27 @@ public class CalTrain {
 	    if(inStation.hasTrain() == false){
 			Train newTrain = new Train("Train " + (this.trainCtr), count, inStation, this);
 			trains.add(newTrain);
-			int stationNumber = inStation.getStationNumber();
+			String stationName = inStation.getName();
 			
-			GUINew.list_train_status.get(stationNumber).setText("<html>" + 
-															  StaticTexts.train_deployed_status + "<br>" +
-															  StaticTexts.train_default_location + "<br>" + 
-															  StaticTexts.train_passenger_count + count + "<br>" +
-															  StaticTexts.train_passenger_count + "0 </html>");
+			switch(stationName){
+				case "Station 1":	MainWindow.station1TextArea.append(newTrain.getTrainNum() + " has a total of " + count + " seats");
+						break;
+				case "Station 2":	MainWindow.station2TextArea.append(newTrain.getTrainNum() + " has a total of " + count + " seats");
+					break;
+				case "Station 3":	MainWindow.station3TextArea.append(newTrain.getTrainNum() + " has a total of " + count + " seats");
+					break;
+				case "Station 4":	MainWindow.station4TextArea.append(newTrain.getTrainNum() + " has a total of " + count + " seats");
+					break;
+				case "Station 5":	MainWindow.station5TextArea.append(newTrain.getTrainNum() + " has a total of " + count + " seats");
+					break;
+				case "Station 6":	MainWindow.station6TextArea.append(newTrain.getTrainNum() + " has a total of " + count + " seats");
+					break;
+				case "Station 7":	MainWindow.station7TextArea.append(newTrain.getTrainNum() + " has a total of " + count + " seats");
+					break;
+				case "Station 8":	MainWindow.station8TextArea.append(newTrain.getTrainNum() + " has a total of " + count + " seats");
+					break;
+			}
+			
 			trainCtr++;
 	    }
 	    else{
@@ -59,28 +71,21 @@ public class CalTrain {
         }
         else{
         }
-    }
         
 
-    
-    
+    }
+	
     public void station_wait_for_train(Station station, int numPassengers){
-        Random r = new Random();
-        boolean validDestination = false;
-        int destination = 0,
-        	passengerOrigin = station.getStationNumber();
-        //since passenger destination is random, we want their destination to be not the same as their origin
-        while(validDestination == false){
-        	destination =  r.nextInt(8 - 1 + 1) + 1;
-        	if(passengerOrigin != destination){
-        		station.addNewPassenger(peopleCtr+1, destination);
-        		validDestination = true;
-        	}
-        }
+        Scanner sc = new Scanner(System.in);
+        int destination = MainWindow.getPassengerDestSelectComboBox();
         
-        GUINew.queue_info_list.get(passengerOrigin).append("Passenger" + peopleCtr + "\n   Destination: " + destination + "\n");
+        station.addNewPassenger(peopleCtr+1, destination);
+        System.out.println("Passenger " + station.getPeople().get(station.getPeople().size()-1).getCount() + " awaiting transportation");
+        MainWindow.consoleLogTextArea.append("Passenger " + station.getPeople().get(station.getPeople().size()-1).getCount() + " awaiting transportation" + "\n");
         
-        peopleCtr++;  
+        peopleCtr++;
+        
+        
     }
 
     public void station_on_board(Station station){
@@ -89,9 +94,17 @@ public class CalTrain {
         station.getTrain().getOnBoard(passenger);
     }
 
-    public void station_init(){
-        for(int i = 0; i < 8; i++){
-            stations.add(new Station(i));
+    public void station_init(int numStations){
+        for(int i = 0; i < numStations; i++){
+            stations.add(new Station("Station " + (i+1)));
+        }
+        for(int j = 0; j < numStations; j++){
+            if(j == 7){
+                stations.get(j).setNextStation(stations.get(0));
+            }
+            else{
+                stations.get(j).setNextStation(stations.get(j+1));
+            }
         }	
     }
 	
@@ -110,10 +123,40 @@ public class CalTrain {
         
         System.out.println(" ");
         
-        int stationNumber = station.getStationNumber();
+        String stationName = station.getName();
 		
-        GUINew.queue_total_list.get(stationNumber).setText(Integer.toString(station.getPeople().size()));
+		switch(stationName){
+			case "Station 1":	MainWindow.station1PassengerQueue.setText(Integer.toString(station.getPeople().size()));	
+					break;
+			case "Station 2":	MainWindow.station2PassengerQueue.setText(Integer.toString(station.getPeople().size()));	
+				break;
+			case "Station 3":	MainWindow.station3PassengerQueue.setText(Integer.toString(station.getPeople().size()));	
+				break;
+			case "Station 4":	MainWindow.station4PassengerQueue.setText(Integer.toString(station.getPeople().size()));	
+				break;
+			case "Station 5":	MainWindow.station5PassengerQueue.setText(Integer.toString(station.getPeople().size()));	
+				break;
+			case "Station 6":	MainWindow.station6PassengerQueue.setText(Integer.toString(station.getPeople().size()));	
+				break;
+			case "Station 7":	MainWindow.station7PassengerQueue.setText(Integer.toString(station.getPeople().size()));	
+				break;
+			case "Station 8":	MainWindow.station8PassengerQueue.setText(Integer.toString(station.getPeople().size()));	
+				break;
+		}
         
+        for(int j = 0; j < station.getPeople().size(); j++){
+            if(j == 0){
+            	System.out.println("Passengers currently in " + station.getName());
+            	MainWindow.consoleLogTextArea.append("Passengers currently in " + station.getName() + "\n");
+	        }
+	            
+	        System.out.println("Passenger " + station.getPeople().get(j).getCount());
+	        MainWindow.consoleLogTextArea.append("Passenger " + station.getPeople().get(j).getCount() + "\n");
+	        
+	        
+			
+	
+        }
 
     }
     

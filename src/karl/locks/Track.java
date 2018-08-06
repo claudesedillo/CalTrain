@@ -1,10 +1,5 @@
 package karl.locks;
 
-
-/**
-*
-* @author paolo
-*/
 public class Track {
    public Train train;
 	

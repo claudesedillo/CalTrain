@@ -5,10 +5,6 @@ import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 
-/**
- *
- * @author paolo
- */
 public class Train implements Runnable{
     private Condition rideable;
     private String trainnum;

@@ -11,6 +11,7 @@ import semaphores.Station;
 public class Train implements Runnable {
 	private Simulator sync;
 	
+	public long startTime;
 	private Semaphore canArrive;
 	private String name;
 	private Semaphore seatLimit;
@@ -27,6 +28,7 @@ public class Train implements Runnable {
 		this.seatLimit = new Semaphore(limit);
 		this.canArrive = new Semaphore(0);
 		this.sync = c;
+		this.startTime = System.currentTimeMillis();
 		try {
 			System.out.println("AvailablePermits: " + this.seatLimit.availablePermits());
 			Thread.sleep(1000);
@@ -111,11 +113,19 @@ public class Train implements Runnable {
 			}
 			
 			inStation.getsOccupiedBy(this);
-			
-			str = this.name + " has arrived.\n";
+			double endTime = System.currentTimeMillis();
+			double totalTimeArrive = (endTime - startTime) * 0.001;
+			str = this.name + " has arrived. in " + totalTimeArrive + "\n";
 			System.out.println(str + inStation.getName() + "\n");
 			System.out.println("CURRENT TRAIN: " + inStation.getTrain().getName());
-
+			
+			if(sync.caltrainGUI != null)
+				for(int i = 0; i < 8; i++){
+					if(inStation.getName().equals(sync.getStations().get(i).getName())){
+						sync.caltrainGUI.list_station_status.get(i).append(str);		
+					}
+				}
+			
 			System.out.println("\tENTERING STATION: " + inStation.getName());
 			
 			sync.station_out_board(inStation);
@@ -126,8 +136,9 @@ public class Train implements Runnable {
 			
 			waitTrain();
 			inStation.removeTrain();
-			
-			str = this.name + " is leaving\n";
+			endTime = System.currentTimeMillis();
+			double totalTimeLeave = (endTime - startTime) * 0.001;
+			str = this.name + " is leaving at" + totalTimeLeave + "\n";
 			System.out.println("\t" + str + inStation.getName() + "\n");
 			
 			if(sync.caltrainGUI != null)
@@ -161,4 +172,13 @@ public class Train implements Runnable {
 	public void setPassengers(ArrayList<Passenger> passengers) {
 		this.passengers = passengers;
 	}
+
+	public long getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(long startTime) {
+		this.startTime = startTime;
+	}
+
 }
