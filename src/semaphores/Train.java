@@ -1,14 +1,19 @@
-package zed.semaphores;
+package semaphores;
 
 import java.util.ArrayList;
 import java.util.concurrent.Semaphore;
 
-public class Train implements Runnable{
+import semaphores.Passenger;
+import semaphores.Simulator;
+import semaphores.Station;
+
+
+public class Train implements Runnable {
 	private Simulator sync;
 	
-	private Semaphore canRide;
+	private Semaphore canArrive;
 	private String name;
-	private Semaphore limit;
+	private Semaphore seatLimit;
 	
 	
 	private Station inStation;
@@ -19,11 +24,11 @@ public class Train implements Runnable{
 	public Train(String name, int limit, Station inStation, Simulator c){
 		this.name = name;
 		this.passengers = new ArrayList<>();
-		this.limit = new Semaphore(limit);
-		this.canRide = new Semaphore(0);
+		this.seatLimit = new Semaphore(limit);
+		this.canArrive = new Semaphore(0);
 		this.sync = c;
 		try {
-			System.out.println("AvailablePermits: " + this.limit.availablePermits());
+			System.out.println("AvailablePermits: " + this.seatLimit.availablePermits());
 			Thread.sleep(1000);
 			
 		} catch (InterruptedException e) {
@@ -39,14 +44,14 @@ public class Train implements Runnable{
 	
 	public void getOnBoard(Passenger p){
 		try {
-			limit.acquire();
+			seatLimit.acquire();
 			passengers.add(p);
 		} catch (InterruptedException e) {
 		}
 	}
 	
 	public void getOffBoard(Passenger p){
-		limit.release();
+		seatLimit.release();
 		passengers.remove(p);
 	}
 	
@@ -55,20 +60,20 @@ public class Train implements Runnable{
 	}
 	
 	public Semaphore getLimit(){
-		return this.limit;
+		return this.seatLimit;
 	}
 	
 	
 	public void waitTrain(){
 		try {
-			canRide.acquire();
+			canArrive.acquire();
 		} catch (Exception e) {
 		}
 	}
 	
 	public boolean trywaitTrain(){
 		try{
-			if(canRide.tryAcquire()){
+			if(canArrive.tryAcquire()){
 				return true;
 			}
 		}catch(Exception e){
@@ -78,7 +83,7 @@ public class Train implements Runnable{
 	
 	public void signalTrain(){
 		try {
-			canRide.release();
+			canArrive.release();
 		} catch (Exception e) {
 		}
 	}
@@ -92,7 +97,7 @@ public class Train implements Runnable{
 			if(sync.caltrainGUI != null)
 				for(int i = 0; i < 8; i++){
 					if(inStation.getName().equals(sync.getStations().get(i).getName())){
-						sync.caltrainGUI.stationList.get(i).append(str);		
+						sync.caltrainGUI.list_station_status.get(i).append(str);		
 					}
 				}
 			
@@ -115,7 +120,7 @@ public class Train implements Runnable{
 			
 			sync.station_out_board(inStation);
 			
-			while(limit.availablePermits() > 0 && inStation.getPeople().size() > 0){
+			while(seatLimit.availablePermits() > 0 && inStation.getPeople().size() > 0){
 				//get passengers
 			}
 			
@@ -128,7 +133,7 @@ public class Train implements Runnable{
 			if(sync.caltrainGUI != null)
 				for(int i = 0; i < 8; i++){
 					if(inStation.getName().equals(sync.getStations().get(i).getName())){
-						sync.caltrainGUI.stationList.get(i).append(str);		
+						sync.caltrainGUI.list_station_status.get(i).append(str);		
 					}
 				}
 			
@@ -146,10 +151,7 @@ public class Train implements Runnable{
 			} catch (InterruptedException e) {
 			}
 		}
-		sync.caltrainGUI.toggleButtons(true);
 		
-		if(sync.getTrainCtr() == 16)
-			sync.caltrainGUI.toggleButtons(false);
 	}
 	
 	public ArrayList<Passenger> getPassengers() {

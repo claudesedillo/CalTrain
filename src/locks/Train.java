@@ -135,7 +135,7 @@ public class Train implements Runnable{
 			
 			
 			int stationNumber = inStation.getStationNumber();
-			GUI.station_status_list.get(stationNumber).append("\n" + this.getTrainNum() + "offloaded " + counter + " passengers.");
+			GUINew.station_status_list.get(stationNumber).append("\n" + this.getTrainNum() + "offloaded " + counter + " passengers.");
 
 			//program delay
 			try {
@@ -158,7 +158,7 @@ public class Train implements Runnable{
 			System.out.println("Seats Free: " + this.getTrainSeats());
 			System.out.println(" ");
 
-			GUI.station_status_list.get(stationNumber).append(counter + " passengers boarded the train." + "\n");
+			GUINew.station_status_list.get(stationNumber).append(counter + " passengers boarded the train." + "\n");
 			MainWindow.consoleLogTextArea.append(counter + " passengers boarded the train." + "\n");
 			MainWindow.consoleLogTextArea.append("Seats Free: " + this.getTrainSeats() + "\n");
 

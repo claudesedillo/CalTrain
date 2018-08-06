@@ -11,9 +11,6 @@ public class Driver {
 	static MainWindow mw = new MainWindow();
 	static MainWindowReceiver mwReceiver = new MainWindowReceiver(mw);
 	
-	
-
-	
     public static void main(String[] args){
     	
 			

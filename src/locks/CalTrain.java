@@ -38,7 +38,7 @@ public class CalTrain {
 			trains.add(newTrain);
 			int stationNumber = inStation.getStationNumber();
 			
-			GUI.list_train_status.get(stationNumber).setText("<html>" + 
+			GUINew.list_train_status.get(stationNumber).setText("<html>" + 
 															  StaticTexts.train_deployed_status + "<br>" +
 															  StaticTexts.train_default_location + "<br>" + 
 															  StaticTexts.train_passenger_count + count + "<br>" +
@@ -78,7 +78,7 @@ public class CalTrain {
         	}
         }
         
-        GUI.queue_info_list.get(passengerOrigin).append("Passenger" + peopleCtr + "\n   Destination: " + destination + "\n");
+        GUINew.queue_info_list.get(passengerOrigin).append("Passenger" + peopleCtr + "\n   Destination: " + destination + "\n");
         
         peopleCtr++;  
     }
@@ -112,7 +112,7 @@ public class CalTrain {
         
         int stationNumber = station.getStationNumber();
 		
-        GUI.queue_total_list.get(stationNumber).setText(Integer.toString(station.getPeople().size()));
+        GUINew.queue_total_list.get(stationNumber).setText(Integer.toString(station.getPeople().size()));
         
 
     }
