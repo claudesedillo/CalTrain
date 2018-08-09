@@ -13,7 +13,7 @@ import javax.swing.JTextArea;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 
-import semaphores.Simulator;
+import locks.Simulator;
 
 public class GUI {
 
@@ -296,71 +296,71 @@ public class GUI {
 		frame.getContentPane().add(queue_total_station8);
 		list_queue_total.add(queue_total_station8);
 		
-		lblStationStatus.setBounds(10, 455, 131, 14);
+		lblStationStatus.setBounds(10, 389, 131, 14);
 		frame.getContentPane().add(lblStationStatus);
 		
-		station1_status_scrollpane.setBounds(10, 500, 250, 66);
+		station1_status_scrollpane.setBounds(10, 439, 250, 100);
 		frame.getContentPane().add(station1_status_scrollpane);
 		station1_status_scrollpane.setViewportView(status_station1);
 		list_station_status.add(status_station1);
 		
-		station2_status_scrollpane.setBounds(354, 500, 250, 66);
+		station2_status_scrollpane.setBounds(357, 439, 250, 100);
 		frame.getContentPane().add(station2_status_scrollpane);
 		station2_status_scrollpane.setViewportView(status_station2);
 		list_station_status.add(status_station2);
 		
-		station3_status_scrollpane.setBounds(669, 500, 250, 66);
+		station3_status_scrollpane.setBounds(669, 439, 250, 100);
 		frame.getContentPane().add(station3_status_scrollpane);
 		station3_status_scrollpane.setViewportView(status_station3);
 		list_station_status.add(status_station3);
 		
-		station4_status_scrollpane.setBounds(986, 500, 250, 66);
+		station4_status_scrollpane.setBounds(986, 439, 250, 100);
 		frame.getContentPane().add(station4_status_scrollpane);
 		station4_status_scrollpane.setViewportView(status_station4);
 		list_station_status.add(status_station4);
 		
-		station5_status_scrollpane.setBounds(986, 604, 250, 66);
+		station5_status_scrollpane.setBounds(986, 570, 250, 100);
 		frame.getContentPane().add(station5_status_scrollpane);
 		station5_status_scrollpane.setViewportView(status_station5);
 		list_station_status.add(status_station5);
 		
-		station6_status_scrollpane.setBounds(669, 604, 250, 66);
+		station6_status_scrollpane.setBounds(669, 570, 250, 100);
 		frame.getContentPane().add(station6_status_scrollpane);
 		station6_status_scrollpane.setViewportView(status_station6);
 		list_station_status.add(status_station6);
 		
-		station7_status_scrollpane.setBounds(357, 604, 250, 66);
+		station7_status_scrollpane.setBounds(357, 570, 250, 100);
 		frame.getContentPane().add(station7_status_scrollpane);
 		station7_status_scrollpane.setViewportView(status_station7);
 		list_station_status.add(status_station7);
 		
-		station8_status_scrollpane.setBounds(10, 604, 250, 66);
+		station8_status_scrollpane.setBounds(10, 570, 250, 100);
 		frame.getContentPane().add(station8_status_scrollpane);
 		station8_status_scrollpane.setViewportView(status_station8);
 		list_station_status.add(status_station8);
 		
-		lblStationStatus1.setBounds(10, 480, 131, 14);
+		lblStationStatus1.setBounds(10, 414, 131, 14);
 		frame.getContentPane().add(lblStationStatus1);
 		
-		lblStationStatus2.setBounds(354, 480, 120, 14);
+		lblStationStatus2.setBounds(354, 414, 120, 14);
 		frame.getContentPane().add(lblStationStatus2);
 		
-		lblStationStatus3.setBounds(669, 475, 120, 14);
+		lblStationStatus3.setBounds(669, 414, 120, 14);
 		frame.getContentPane().add(lblStationStatus3);
 		
-		lblStationStatus4.setBounds(986, 475, 125, 14);
+		lblStationStatus4.setBounds(986, 414, 125, 14);
 		frame.getContentPane().add(lblStationStatus4);
 		
-		lblStationStatus5.setBounds(986, 579, 115, 14);
+		lblStationStatus5.setBounds(986, 550, 115, 14);
 		frame.getContentPane().add(lblStationStatus5);
 		
-		lblStationStatus6.setBounds(669, 579, 120, 14);
+		lblStationStatus6.setBounds(669, 550, 120, 14);
 		frame.getContentPane().add(lblStationStatus6);
 		
-		lblStationStatus7.setBounds(354, 579, 120, 14);
+		lblStationStatus7.setBounds(357, 550, 120, 14);
 		frame.getContentPane().add(lblStationStatus7);
 		
-		lblStationStatus8.setBounds(10, 579, 120, 14);
+		lblStationStatus8.setBounds(10, 550, 120, 14);
 		frame.getContentPane().add(lblStationStatus8);
 		
 

@@ -1,53 +1,53 @@
 package locks;
 
-
 public class Passenger implements Runnable{
-   private Station inStation;
-   private String outStation;
-   private int count;
-   private Thread thread = new Thread(this);
-   
-   
-   
-   public Passenger(int count, Station inStation, String outStation){
-	this.count = count;
-	this.inStation = inStation;
-	this.outStation = outStation;
-   }
-
-   public int getCount(){
-	return this.count;
-   }
 	
+	private Simulator sync;
+	private Station inStation;
+	private Station outStation;
+	private String name;
+	private Thread t = new Thread(this);
 	
-   public String getOutStation(){
-	return this.outStation;
-   }
-	
-   @Override
-   public void run() {
-       while(true){
-           while(inStation.hasTrain()){
-		try {
-                   inStation.getTrain().waitTrain();
-                   Thread.sleep(100);
-		} 
-		catch (InterruptedException e){
-                   e.printStackTrace();
-		}
-		finally{
-                   if(inStation.getTrain().getTrainSeats() > 0 && inStation.getPeople().size() > 0){
-			CalTrain.getInstance().station_on_board(inStation);
-			inStation.getTrain().signalTrain();
-                   }
-		}
-           }
-           try{
-		Thread.sleep(7500);
-           }
-           catch(Exception e){
-		e.printStackTrace();
-           }	
+	public Passenger(String name, Station inStation, Station outStation, Simulator c){
+		this.name = name;
+		this.inStation = inStation;
+		this.outStation = outStation;
+		this.sync = c;
+		this.t.start();
 	}
-   }
+	
+	public String getName(){
+		return this.name;
+	}
+	
+	@Override
+	public void run() {
+		while(true){
+			while(inStation.hasTrain()){
+				
+					try {
+						Thread.sleep(10);
+					} catch (InterruptedException e) {
+					}
+				if(inStation.getTrain().getSeatLimit() > 0 && inStation.getPeople().size() > 0){
+						
+					sync.station_on_board(inStation);
+				}
+				inStation.getTrain().signalTrain();
+			}
+			try{
+				Thread.sleep(10);
+			}catch(Exception e){
+			}
+			
+		}
+	}
+
+	public Station getOutStation() {
+		return outStation;
+	}
+
+	public void setOutStation(Station outStation) {
+		this.outStation = outStation;
+	}
 }

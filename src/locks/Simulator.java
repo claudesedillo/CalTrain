@@ -1,10 +1,14 @@
-package zed.semaphores;
+package locks;
 
 import java.util.ArrayList;
 
-public class Simulator{
+import locks.GUI;
+import locks.Passenger;
+import locks.Station;
+import locks.Train;
+
+public class Simulator {
 	public static Simulator singleton;
-	public Output output;
 	
 	public GUI caltrainGUI;
 
@@ -18,14 +22,6 @@ public class Simulator{
 		this.peopleCtr = 1;
 		this.stations = new ArrayList<>();
 		station_init();
-		setoutput();
-	}
-	
-	public void setoutput(){
-		output = new Output();
-	}
-	public void OutputThis(String str){
-		output.setText(str);
 	}
 	
 	public void setGUI(GUI GUI){
@@ -41,18 +37,23 @@ public class Simulator{
 	
 	
 	public void station_load_train(Station s, int count){
+		
 		new Train("Train " + trainCtr, count, s, this);
-//		this.caltrainGUI.lblNumTrainsDeployed.setText(String.valueOf(trainCtr));
+		this.caltrainGUI.list_train_status.get(trainCtr - 1).setText("Status: Deployed");
+		this.caltrainGUI.list_train_seatcount.get(trainCtr - 1).setText("Seat Count: " + count);
 		trainCtr++;
+
 	}
 	
-	public void station_wait_for_train(Station s, Station o){
+	public void station_wait_for_train(Station origin, Station destination){
 		String str;
-		s.addNewPassenger(peopleCtr, o);
+		origin.addNewPassenger(peopleCtr, destination);
 		
-		str = s.getPeople().get(s.getPeople().size()-1).getName() + " is now waiting.\n";		
-		if(caltrainGUI != null)
-			caltrainGUI.stationList.get(stations.indexOf(s)).append(str);
+		str = origin.getPeople().get(origin.getPeople().size()-1).getName() + ", destination: " + destination.getName() + " is now waiting \n";		
+		if(caltrainGUI != null){
+			caltrainGUI.list_station_status.get(stations.indexOf(origin)).append(str);
+			caltrainGUI.list_queue_total.get(stations.indexOf(origin)).setText("Total:" + origin.getPeople().size());
+		}
 		System.out.println("\t\t" + str);
 		peopleCtr++;
 	}
@@ -63,13 +64,15 @@ public class Simulator{
 			if(s.getTrain().getPassengers().get(i).getOutStation().getName().equals(s.getName())){
 				
 				str = s.getTrain().getPassengers().get(i).getName() + " is getting off " + s.getTrain().getName() + ".\n";
+				this.caltrainGUI.list_queue_total.get(i).setText("Total: " + s.getPeople().size());
+				this.caltrainGUI.list_train_passengercount.get(i).setText("Passenger Count:" + s.getTrain().getPassengers().size());
 				
 				System.out.println("\t" + str);
 				
 				if(caltrainGUI != null)
 					for(int j = 0; j < stations.size(); j++){
 						if(s.getName().equals(stations.get(j).getName())){
-							this.caltrainGUI.stationList.get(j).append(str);		
+							this.caltrainGUI.list_station_status.get(j).append(str);
 						}
 					}
 				
@@ -91,7 +94,7 @@ public class Simulator{
 		if(caltrainGUI != null)
 			for(int i = 0; i < stations.size(); i++){
 				if(s.getName().equals(stations.get(i).getName())){
-					this.caltrainGUI.stationList.get(i).append(str);		
+					this.caltrainGUI.list_station_status.get(i).append(str);
 				}
 			}
 		
@@ -102,7 +105,7 @@ public class Simulator{
 		if(caltrainGUI != null)
 			for(int i = 0; i < stations.size(); i++){
 				if(s.getName().equals(stations.get(i).getName())){
-					caltrainGUI.stationList.get(i).append(str);		
+					caltrainGUI.list_station_status.get(i).append(str);		
 				}
 			}
 		
@@ -115,19 +118,19 @@ public class Simulator{
 			if(caltrainGUI != null)
 				for(int i = 0; i < stations.size(); i++){
 					if(s.getName().equals(stations.get(i).getName())){
-						caltrainGUI.stationList.get(i).append(str);		
+						caltrainGUI.list_station_status.get(i).append(str);		
 					}
 				}
 			System.out.println(str);
 		}
 	
-		if(s.getTrain().getLimit().availablePermits() == 0){
+		if(s.getTrain().getSeatLimit() == 0){
 			str = "Train is full.\n";
 			
 			if(caltrainGUI != null)
 				for(int i = 0; i < stations.size(); i++){
 					if(s.getName().equals(stations.get(i).getName())){
-						caltrainGUI.stationList.get(i).append(str);		
+						caltrainGUI.list_station_status.get(i).append(str);		
 					}
 				}
 			System.out.println(str);

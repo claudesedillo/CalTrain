@@ -24,8 +24,8 @@ public class Simulator {
 		station_init();
 	}
 	
-	public void setGUI(GUI GUI){
-		this.caltrainGUI = GUI;
+	public void setGUI(GUI gui){
+		this.caltrainGUI = gui;
 	}
 	
 	public static Simulator getInstance(){
